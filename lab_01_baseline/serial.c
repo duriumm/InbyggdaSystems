@@ -15,6 +15,10 @@ UCSR0C = (1<<USBS0)|(3<<UCSZ00);            // Set frame format med 8N1 som inne
                                             // 8 databits, N = No parityt, 1 = One stopbit. //
 }
 
+void uart_echo(void){
+    uart_putchar(uart_getchar());           // Here we simply print out whatever we type in.
+}
+
 
 void uart_putchar( unsigned char data ){    
     /*if(data == '\r'){                     // If char 'data' == \r (which is enter key on putty) we give additional \n to make a new line //
@@ -42,9 +46,9 @@ void uart_putstr(const char *str){
 }
 
 unsigned char uart_getchar( void ){
- while (!(UCSR0A & (1<<RXC0)));             // Wait for data to be received //
- 
- return UDR0;                               // Get and return received data from buffer //
+    while (!(UCSR0A & (1<<RXC0)));             // Wait for data to be received //
+    
+    return UDR0;                               // Get and return received data from buffer //
 }
 
 /*

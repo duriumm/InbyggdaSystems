@@ -19,9 +19,12 @@ int main () {
         _delay_ms(500);
         uart_putchar('\n');
         */
-        _delay_ms(500);
-        uart_putstr("Lasse\n"); 
+        //_delay_ms(500);
+        //uart_putstr("Lasse\n"); 
+        //uart_putchar(uart_getchar());
 
+        
+        uart_echo();
 
         /*       
         PORTB |= (1 << PB1);    // We set the second bit(PB1) in PORTB registry to 1 if the second bit(PB1) ALREADY is 1 or 0
